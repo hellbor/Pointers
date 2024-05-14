@@ -1,37 +1,46 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
-void Print(const int arr[], const int n);
-void Print(const int arr[], int even_arr[], int odd_arr[], const int n, const int m, const int k);
+void Print(int arr[], const int n);
 
 void main()
 {
 	setlocale(LC_ALL, "");
 	const int n = 10;
-	int* arr = new int[n];
-	cout << "Âûâåäèòå ìàññèâ íà ýêðàí:" << endl;
-
+	int arr [n];
+	cout << "Ð’Ñ‹Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð°ÑÑÐ¸Ð² Ð½Ð° ÑÐºÑ€Ð°Ð½:" << tab;
 	FillRand(arr, n);
 	Print(arr, n);
+	cout << endl;
+
+	int even = 0;
+	int odd = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] % 2 == 0)even++;
+		else odd++;
+	}
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡ÐµÑ‚Ð½Ñ‹Ñ… Ñ‡Ð¸ÑÐµÐ»:" << even << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½ÐµÑ‡ÐµÑ‚Ð½Ñ‹Ñ… Ñ‡Ð¸ÑÐµÐ»:" << odd << endl;
 
 	cout << endl;
 
-	int* even_arr = new int[n];
-	cout << "×åòíûå ÷èñëà ìàññèâà:" << tab;
-	FillRand(even_arr, n);
-	Print(even_arr, n);
+	int* even_arr = new int[even];
+	int* odd_arr = new int[odd];
 
-	cout << endl;
+	for (int i = 0, j = 0, k = 0; i < n; i++)
+	{
+		(arr[i] % 2 == 0 ? even_arr[j++] : odd_arr[k++]) = arr[i];
+	}
+	cout << "Ð§ÐµÑ‚Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ð¼Ð°ÑÑÐ¸Ð²Ð°:" << tab;
+	Print(even_arr, even);
 
-	int* odd_arr = new int[n];
-	cout << "Íå÷åòíûå ÷èñëà ìàññèâà:" << tab;
-	FillRand(odd_arr, n);
-	Print(odd_arr, n);
+	cout << "ÐÐµÑ‡ÐµÑ‚Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° Ð¼Ð°ÑÑÐ¸Ð²Ð°:" << tab;
+	Print(odd_arr, odd);
 
-	delete[] arr;
 	delete[] even_arr;
 	delete[] odd_arr;
 }
@@ -40,25 +49,14 @@ void FillRand(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		*(arr + i) = rand() % 100;
+		arr[i] = rand() % 100;
 	}
 }
-void Print(const int arr[], const int n)
+void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
 	}
-}
-
-void Print(const int arr[], int even_arr[], int odd_arr[], const int n, int m, int k)
-{
-	for (int i = 0; i < m; i++)
-	{
-		for (int i = 0; i < k; i++)
-			{
-				cout << (*(arr + i) % 2 == *(arr + i) ? even_arr[m] : odd_arr[k]);
-			}
-			cout << endl;
-	}
+	cout << endl;
 }
