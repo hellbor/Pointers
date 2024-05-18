@@ -28,7 +28,6 @@ void main()
 	cout << "Введите добавляемое значение:"; cin >> value;
 	arr = push_back(arr, n, value);
 	Print(arr, n);
-
 	arr = push_front(arr, n, value);
 	Print(arr, n);
 
