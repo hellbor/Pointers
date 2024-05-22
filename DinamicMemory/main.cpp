@@ -326,9 +326,11 @@ int** pop_row_front(int** arr, int& rows, const int cols)
 int** erase_row(int** arr, int& rows, const int cols, int index)
 {
 	int** buffer = new int* [--rows];
-	for (int i = 0; i < index; i++)buffer[i] = arr[i];
-	for (int i = index; i < rows; i++)buffer[i] = arr[i + 1];
-
+	for (int i = 0; i < rows; i++)
+	{
+		buffer[i] = arr[i < index ? i : i + 1];
+	}
+	delete[] arr[rows];
 	delete[] arr;
 	return buffer;
 }
