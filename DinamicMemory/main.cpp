@@ -92,14 +92,14 @@ void main()
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	/*cout << "Добавление строки в конец массива:" << endl;
+	cout << "Добавление строки в конец массива:" << endl;
 	arr = push_row_back(arr, rows, cols);
 	FillRand(arr[rows - 1], cols, 100, 1000);
 	Print(arr, rows, cols);
 
 	cout << "Добавление строки в начало массива:" << endl;
 	arr = push_row_front(arr, rows, cols);
-	FillRand(arr[0], rows, 100, 1000);
+	FillRand(arr[0], cols, 100, 1000);
 	Print(arr, rows, cols);
 
 	int row_index;
@@ -118,7 +118,7 @@ void main()
 
 	cout << "Введите позицию удаляемой строки:"; cin >> row_index;
 	arr = erase_row(arr, rows, cols, row_index);
-	Print(arr, rows, cols);*/
+	Print(arr, rows, cols);
 
 
 	cout << "Добавление столбца в конец массива:" << endl;
