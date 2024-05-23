@@ -29,7 +29,7 @@ int** insert_row(int** arr, int& rows, const int cols, int position);
 
 int** pop_row_back(int** arr, int& rows, const int cols);
 int** pop_row_front(int** arr, int& rows, const int cols);
-int** erase_row(int** arr, int& rows, const int cols, int index);
+int** erase_row(int** arr, int& rows, const int cols, const int index);
 
 //#define DINAMIC_MEMORY_1
 #define DINAMIC_MEMORY_2
@@ -106,6 +106,7 @@ void main()
 
 	cout << "Введите позицию удаляемой строки:"; cin >> index;
 	arr = erase_row(arr, rows, cols, index);
+	//if (index < rows)FillRand(arr[index], cols, 100, 1000);
 	Print(arr, rows, cols);
 
 	Clear(arr, rows);
@@ -306,7 +307,6 @@ int** insert_row(int** arr, int& rows, const int cols, int position)
 	rows++;
 	return buffer;
 }
-
 int** pop_row_back(int** arr, int& rows, const int cols)
 {
 	int** buffer = new int* [--rows];
@@ -323,7 +323,7 @@ int** pop_row_front(int** arr, int& rows, const int cols)
 	delete[] arr;
 	return buffer;
 }
-int** erase_row(int** arr, int& rows, const int cols, int index)
+int** erase_row(int** arr, int& rows, const int cols, const int index)
 {
 	int** buffer = new int* [--rows];
 	for (int i = 0; i < rows; i++)
