@@ -92,7 +92,7 @@ void main()
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	cout << "Добавление строки в конец массива:" << endl;
+	/*cout << "Добавление строки в конец массива:" << endl;
 	arr = push_row_back(arr, rows, cols);
 	FillRand(arr[rows - 1], cols, 100, 1000);
 	Print(arr, rows, cols);
@@ -118,7 +118,7 @@ void main()
 
 	cout << "Введите позицию удаляемой строки:"; cin >> row_index;
 	arr = erase_row(arr, rows, cols, row_index);
-	Print(arr, rows, cols);
+	Print(arr, rows, cols);*/
 
 
 	cout << "Добавление столбца в конец массива:" << endl;
@@ -431,33 +431,36 @@ int** pop_col_back(int** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		int* buffer = new int[--cols];
-		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
+		int* buffer = new int[cols-1];
+		for (int j = 0; j < cols-1; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
 		arr[i] = buffer;
 	}
+	cols--;
 	return arr;
 }
 int** pop_col_front(int** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		int* buffer = new int [--cols];
+		int* buffer = new int [cols-1];
 		for (int j = 0; j < cols - 1; j++)buffer[j] = arr[i][j + 1];
 		delete[] arr[i];
 		arr[i] = buffer;
 	}
+	cols--;
 	return arr;
 }
 int** erase_col(int** arr, const int rows, int& cols, const int index)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		int* buffer = new int[--cols];
+		int* buffer = new int[cols-1];
 		for (int j = 0; j < index; j++)buffer[j] = arr[i][j];
 		for (int j = index; j < cols; j++)buffer[j] = arr[i][j + 1];
 		delete[] arr[i];
 		arr[i] = buffer;
 	}
+	cols--;
 	return arr;
 }
