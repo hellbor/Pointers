@@ -7,7 +7,7 @@ using std::endl;
 #define tab "\t"
 
 int** Allocate(const int rows, const int cols);
-void Clear(int** arr, const int rows);
+template<typename T>void Clear(T** arr, const int rows);
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int** arr, const int rows, const int cols);
@@ -164,9 +164,7 @@ void main()
 	delete[] arr;
 #endif // SYNTAX
 
-
 #endif // DINAMIC_MEMORY_2
-
 }
 
 int** Allocate(const int rows, const int cols)
@@ -178,7 +176,7 @@ int** Allocate(const int rows, const int cols)
 	}
 	return arr;
 }
-void Clear(int** arr, const int rows)
+template<typename T>void Clear(T** arr, const int rows)
 {
 	for (int i = 0; i < rows; i++)
 	{
@@ -343,7 +341,6 @@ template<typename T>T** insert_row(T** arr, int& rows, const int cols, const int
 	rows++;
 	return buffer;
 }
-
 
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols)
 {
