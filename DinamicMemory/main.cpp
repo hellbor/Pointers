@@ -393,10 +393,8 @@ template<typename T>T** pop_col_back(T** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols - 1];
-		for (int j = 0; j < cols-1; j++)buffer[j] = arr[i][j];
-		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = pop_back(arr[i], cols);
+		cols++;
 	}
 	cols--;
 	return arr;
@@ -405,10 +403,8 @@ template<typename T>T** pop_col_front(T** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T [cols - 1];
-		for (int j = 0; j < cols - 1; j++)buffer[j] = arr[i][j + 1];
-		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = pop_front(arr[i], cols);
+		cols++;
 	}
 	cols--;
 	return arr;
@@ -417,11 +413,8 @@ template<typename T>T** erase_col(T** arr, const int rows, int& cols, const int 
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols - 1];
-		for (int j = 0; j < index; j++)buffer[j] = arr[i][j];
-		for (int j = index; j < cols; j++)buffer[j] = arr[i][j + 1];
-		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = erase(arr[i], cols, index);
+		cols++;
 	}
 	cols--;
 	return arr;
