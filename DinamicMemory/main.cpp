@@ -243,7 +243,9 @@ template<typename T>void Print(T** arr, const int rows, const int cols)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			cout << arr[i][j] << tab;
+			//cout << arr[i][j] << tab;
+			//Вместо оператора индексирования использовать арифметику указателей и оператор разыменования:
+			cout << *(*(arr + i) + j) << tab;
 		}
 		cout << endl;
 	}
